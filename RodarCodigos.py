@@ -74,8 +74,8 @@ def rodar_codigo(file_name):
 
 def pedir_ajuda():
     print(f"\n{maquina}Usuario pediu ajuda!")
-def canal_criador():
-    print(f"\n{maquina}Canal do criador:")
+def creditos_criador():
+    print(f"\n{maquina}Github do criador: https://github.com/KITTz1n")
 def rodar_funcao_cdg():
     try:
         path_file = comando.split(" ")[2]
@@ -86,7 +86,12 @@ def rodar_funcao_cdg():
 def catar_path_txt():
     with open("path.txt","r",encoding="utf-8") as arquivo:
             conteudo = arquivo.read()
+    path_file = conteudo.split(' ')[1]
     print(f"\n{maquina}{conteudo.split(' ')[1]}")
+    try:
+        rodar_codigo(path_file)
+    except Exception as ex:
+        print(f"\n{maquina}Erro: {ex}")
 def sair():
     global rodando
     rodando = False
@@ -96,7 +101,7 @@ while rodando:
     if os.path.exists("path.txt"):
         comandos_dicionario = {
             f"{comando_base} help": pedir_ajuda,
-            f"{comando_base} channel": canal_criador,
+            f"{comando_base} credits": creditos_criador,
             f"{comando_base} run_p <path>": rodar_funcao_cdg,
             f"{comando_base} run_t": catar_path_txt,
             f"{comando_base} leave": sair,
@@ -113,7 +118,7 @@ while rodando:
     else:
         comandos_dicionario = {
             f"{comando_base} help": pedir_ajuda,
-            f"{comando_base} channel": canal_criador,
+            f"{comando_base} credits": creditos_criador,
             f"{comando_base} run_p <path>": rodar_funcao_cdg,
             f"{comando_base} leave": sair,
         }
