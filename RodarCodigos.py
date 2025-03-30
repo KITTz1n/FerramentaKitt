@@ -5,7 +5,6 @@ comando_base = "!kitt"
 nome = "KITT"
 maquina = "--"
 usuario = ">>"
-texto = f"""--{nome}--"""
 
 def criar_caixa(texto):
     linhas = texto.split("\n")
@@ -98,6 +97,7 @@ def sair():
 
 rodando = True
 while rodando:
+    texto = f"""--{nome}--"""
     if os.path.exists("path.txt"):
         comandos_dicionario = {
             f"{comando_base} help": pedir_ajuda,
